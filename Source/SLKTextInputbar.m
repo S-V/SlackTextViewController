@@ -220,12 +220,22 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
                                 @"leftButton": self.editorLeftButton,
                                 @"rightButton": self.editorRightButton,
                                 };
-        
-        NSDictionary *metrics = @{@"left" : @(self.contentInset.left),
-                                  @"right" : @(self.contentInset.right)
+
+        //TODO: customize
+        const int sideMargin = 18;
+
+//        NSDictionary *metrics = @{@"left" : @(self.contentInset.left),
+//                                  @"right" : @(self.contentInset.right),
+//                                  };
+        NSDictionary *metrics = @{@"left" : @(sideMargin),
+                                  @"right" : @(sideMargin),
                                   };
-        
-        [_editorContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(left)-[leftButton(60)]-(left)-[label(>=0)]-(right)-[rightButton(60)]-(<=right)-|" options:0 metrics:metrics views:views]];
+        [_editorContentView addConstraints:[
+            NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(left)-[leftButton(>=60)]-(left)-[label(>=0)]-(right)-[rightButton(>=60)]-(<=right)-|"
+            options:0
+            metrics:metrics
+            views:views
+        ]];
         [_editorContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[leftButton]|" options:0 metrics:metrics views:views]];
         [_editorContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[rightButton]|" options:0 metrics:metrics views:views]];
         [_editorContentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[label]|" options:0 metrics:metrics views:views]];
