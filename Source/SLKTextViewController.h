@@ -61,6 +61,14 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /** The bottom toolbar containing a text view and buttons. */
 @property (nonatomic, readonly) SLKTextInputbar *textInputbar;
 
+/** The view displayed beneath the text input bar. Can contain a 'citation'/mention text field shown when replying to message. */
+@property (nonatomic, readonly) UIView *bottomBarView;
+
+@property (nonatomic, assign, getter = isBottomBarViewVisible) BOOL bottomBarViewVisible;
+
+/** The bottom bar view's height. Default is 38 pts. */
+@property (nonatomic, assign) CGFloat bottomBarViewHeight;
+
 /** The default typing indicator used to display user names horizontally. */
 @property (nonatomic, readonly) SLKTypingIndicatorView *_Nullable typingIndicatorView;
 
